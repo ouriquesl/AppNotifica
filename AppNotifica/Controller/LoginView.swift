@@ -12,77 +12,26 @@ class LoginView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor = .viewBackgroundColor
         setupVisualElements()
     }
     //cria a função para imagem do login
-    var imageLogin: UIImageView = {
-        let imagem = UIImageView()
-        imagem.image = UIImage(named: "ImageLogin")
-        imagem.contentMode = .scaleAspectFit
-        imagem.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        return imagem
-    }()
+    var imageLogin = ImageDefault(image: "ImageLogin")
     
     //cria a função para imageLabel
-    var imageLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor(red: 0.541, green: 0.541, blue: 0.557, alpha: 1)
-        label.font = UIFont(name: "SFProDisplay-Light", size: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Registre e gerencie as ocorrências do seu IF"
-        return label
-        
-    }()
+    var imageLabel = LabelDefault(text: "Registre e gerencie as ocorrências do seu IF")
     
     //cria a função para o emailTextField
-    var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        textField.placeholder = "E-mail"
-
-        return textField
-        
-    }()
+    var emailTextField = TextFieldDefault(text: "E-mail")
     
     //cria a função para a senhaTextField
-    var senhaTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        textField.placeholder = "Senha"
-
-        return textField
-        
-    }()
+    var senhaTextField = TextFieldDefault(text: "Senha")
     
+
     //cria a função para a buttonLogar
-    var buttonLogar: UIButton = {
-        let button = UIButton()
-        
-        button.setTitle("LOGAR", for: .normal)
-        button.layer.backgroundColor = UIColor(red: 0.369, green: 0.639, blue: 0.639, alpha: 1).cgColor
-        button.layer.cornerRadius = 14
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        return button
-        
-    }()
+    var buttonLogar = ButtonDefault(text: "LOGAR")
     
-    var buttonRegistrar: UIButton = {
-        let button = UIButton()
-        
-        button.setTitle("REGISTRAR", for: .normal)
-        button.layer.backgroundColor = UIColor(red: 0.369, green: 0.639, blue: 0.639, alpha: 1).cgColor
-        button.layer.cornerRadius = 14
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        return button
-        
-    }()
+    var buttonRegistrar = ButtonDefault(text: "REGISTRAR")
     
     
     func setupVisualElements(){
