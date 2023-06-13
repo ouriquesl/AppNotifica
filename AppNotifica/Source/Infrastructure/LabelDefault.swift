@@ -12,18 +12,21 @@ import UIKit
 
 
 class LabelDefault: UILabel{
-    init(text:String){
+    init(text:String, font: UIFont){
         super.init(frame: .zero)
-        initDefault(text:text)
+        initDefault(text:text, font:font)
         
         
     }
     
-    private func initDefault(text:String){
+    private func initDefault(text:String, font: UIFont){
         self.textColor = .textLabelColor
-        self.font = UIFont(name: "SFProDisplay-Light", size: 16)
+        self.font = font
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.text = "Registre e gerencie as ocorrências do seu IF"
+        self.text = text
+        self.adjustsFontSizeToFitWidth = true
+        self.numberOfLines = 0
+    
     }
     
     required init?(coder: NSCoder) {

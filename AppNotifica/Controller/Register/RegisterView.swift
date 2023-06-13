@@ -1,14 +1,14 @@
 //
-//  LoginView.swift
+//  RegisterView.swift
 //  AppNotifica
 //
-//  Created by IFBIOTIC05 on 06/06/23.
+//  Created by IFBIOTIC05 on 13/06/23.
 //
 
 import Foundation
 import UIKit
 
-class LoginView: UIView {
+class RegisterView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,10 +16,10 @@ class LoginView: UIView {
         setupVisualElements()
     }
     //cria a função para imagem do login
-    var imageLogin = ImageDefault(image: "ImageLogin")
+    //var imageLogin = ImageDefault(image: "ImageLogin")
     
     //cria a função para imageLabel
-    var imageLabel = LabelDefault(text: "Registre e gerencie as ocorrências do seu IF")
+    var imageLabel = LabelDefault(text: "Entre com seu e-mail e senha para se registrar.", font: UIFont.systemFont(ofSize: 27, weight: .regular))
     
     //cria a função para o emailTextField
     var emailTextField = TextFieldDefault(text: "E-mail")
@@ -27,32 +27,31 @@ class LoginView: UIView {
     //cria a função para a senhaTextField
     var senhaTextField = TextFieldDefault(text: "Senha")
     
-
-    //cria a função para a buttonLogar
-    var buttonLogar = ButtonDefault(text: "LOGAR")
+    //criar a função para o confirmaTextField
+    var confirmaTextField = TextFieldDefault(text: "Confirmar Senha")
     
-    var buttonRegistrar = ButtonDefault(text: "REGISTRAR")
+    //cria a função para a buttonLogar
+    var buttonLogar = ButtonDefault(text: "REGISTRAR")
+    
+    //cria a função para a buttonLogar
+    var buttonRegistrar = ButtonDefault(text: "LOGAR")
     
     
     func setupVisualElements(){
-        self.addSubview(imageLogin)
         self.addSubview(imageLabel)
         self.addSubview(emailTextField)
         self.addSubview(senhaTextField)
+        self.addSubview(confirmaTextField)
         self.addSubview(buttonLogar)
         self.addSubview(buttonRegistrar)
         
         NSLayoutConstraint.activate([
-            imageLogin.widthAnchor.constraint(equalToConstant: 274.99),
-            imageLogin.heightAnchor.constraint(equalToConstant: 82.64),
-            imageLogin.topAnchor.constraint(equalTo: self.topAnchor, constant: 239),
-            imageLogin.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 57),
-            imageLogin.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -57),
+          
             
-            imageLabel.widthAnchor.constraint(equalToConstant: 100),
-            imageLabel.topAnchor.constraint(equalTo: imageLogin.bottomAnchor, constant: 5),
-            imageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
-            imageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            imageLabel.widthAnchor.constraint(equalToConstant: 340),
+            imageLabel.heightAnchor.constraint(equalToConstant: 50),
+            imageLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            imageLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 188),
             
             emailTextField.widthAnchor.constraint(equalToConstant: 374),
             emailTextField.heightAnchor.constraint(equalToConstant: 60),
@@ -66,11 +65,18 @@ class LoginView: UIView {
             senhaTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             senhaTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             
+            confirmaTextField.widthAnchor.constraint(equalToConstant: 374),
+            confirmaTextField.heightAnchor.constraint(equalToConstant: 60),
+            confirmaTextField.topAnchor.constraint(equalTo: senhaTextField.bottomAnchor, constant: 23),
+            confirmaTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            confirmaTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            
             buttonLogar.widthAnchor.constraint(equalToConstant: 374),
             buttonLogar.heightAnchor.constraint(equalToConstant: 60),
-            buttonLogar.topAnchor.constraint(equalTo: senhaTextField.bottomAnchor, constant: 25),
+            buttonLogar.topAnchor.constraint(equalTo: confirmaTextField.bottomAnchor, constant: 25),
             buttonLogar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             buttonLogar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            
             
             buttonRegistrar.widthAnchor.constraint(equalToConstant: 374),
             buttonRegistrar.heightAnchor.constraint(equalToConstant: 60),
@@ -92,5 +98,3 @@ class LoginView: UIView {
     }
     
 }
-    
-    
