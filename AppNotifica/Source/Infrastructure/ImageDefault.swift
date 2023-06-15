@@ -15,7 +15,7 @@ class ImageDefault: UIImageView{
     init(image:String){
         super.init(frame: .zero)
         initImageDefault(image:image)
-        
+        atualizarImagem()
         
     }
     
@@ -23,7 +23,7 @@ class ImageDefault: UIImageView{
         self.image = UIImage(named: "ImageLogin")
         self.contentMode = .scaleAspectFit
         self.translatesAutoresizingMaskIntoConstraints = false
-        atualizarImagem()
+        
     }
     
     private func atualizarImagem() {

@@ -9,12 +9,17 @@ import Foundation
 import UIKit
 
 class RegisterView: UIView {
-    
+    //MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .viewBackgroundColor
         setupVisualElements()
     }
+    
+    //MARK: - Clousures
+    var onLogarTap: (() -> Void)?
+    
+    //MARK: - Properties
     //cria a função para imagem do login
     //var imageLogin = ImageDefault(image: "ImageLogin")
     
@@ -31,10 +36,10 @@ class RegisterView: UIView {
     var confirmaTextField = TextFieldDefault(text: "Confirmar Senha")
     
     //cria a função para a buttonLogar
-    var buttonLogar = ButtonDefault(text: "REGISTRAR")
+    var buttonLogar = ButtonDefault(text: "LOGAR")
     
     //cria a função para a buttonLogar
-    var buttonRegistrar = ButtonDefault(text: "LOGAR")
+    var buttonRegistrar = ButtonDefault(text: "REGISTAR")
     
     
     func setupVisualElements(){
@@ -45,6 +50,8 @@ class RegisterView: UIView {
         self.addSubview(buttonLogar)
         self.addSubview(buttonRegistrar)
         
+        
+        buttonLogar.addTarget(self, action: #selector(logarTap), for: .touchUpInside)
         NSLayoutConstraint.activate([
           
             
@@ -95,6 +102,12 @@ class RegisterView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder: ) has not been implemented ")
+    }
+    
+    //MARK: - Actions
+    @objc
+    private func logarTap(){
+        onLogarTap?()
     }
     
 }
