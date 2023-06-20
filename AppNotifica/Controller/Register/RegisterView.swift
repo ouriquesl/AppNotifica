@@ -8,13 +8,8 @@
 import Foundation
 import UIKit
 
-class RegisterView: UIView {
-    //MARK: - Initializer
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = .viewBackgroundColor
-        setupVisualElements()
-    }
+class RegisterView: ViewDefault {
+   
     
     //MARK: - Clousures
     var onLogarTap: (() -> Void)?
@@ -27,13 +22,23 @@ class RegisterView: UIView {
     var imageLabel = LabelDefault(text: "Entre com seu e-mail e senha para se registrar.", font: UIFont.systemFont(ofSize: 27, weight: .regular))
     
     //cria a função para o emailTextField
-    var emailTextField = TextFieldDefault(text: "E-mail")
+    var emailTextField = TextFieldDefault(placeholder: "E-mail",  keyBoardType: .emailAddress, returnKeyType: .next)
     
     //cria a função para a senhaTextField
-    var senhaTextField = TextFieldDefault(text: "Senha")
+    var senhaTextField : TextFieldDefault = {
+        let text = TextFieldDefault (placeholder: "Senha", keyBoardType: .emailAddress, returnKeyType: .done)
+        text.isSecureTextEntry = true
+        
+        return text
+    }()
     
     //criar a função para o confirmaTextField
-    var confirmaTextField = TextFieldDefault(text: "Confirmar Senha")
+    var confirmaTextField : TextFieldDefault = {
+        let text = TextFieldDefault (placeholder: "Confrima sua senha", keyBoardType: .emailAddress, returnKeyType: .done)
+        text.isSecureTextEntry = true
+        
+        return text
+    }()
     
     //cria a função para a buttonLogar
     var buttonLogar = ButtonDefault(text: "LOGAR")
@@ -42,7 +47,11 @@ class RegisterView: UIView {
     var buttonRegistrar = ButtonDefault(text: "REGISTAR")
     
     
-    func setupVisualElements(){
+    override func setupVisualElements(){
+        super.setupVisualElements()
+        emailTextField.delegate = self
+        senhaTextField.delegate = self
+        confirmaTextField.delegate = self
         self.addSubview(imageLabel)
         self.addSubview(emailTextField)
         self.addSubview(senhaTextField)
@@ -98,12 +107,6 @@ class RegisterView: UIView {
         
     }
     
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder: ) has not been implemented ")
-    }
-    
     //MARK: - Actions
     @objc
     private func logarTap(){
@@ -111,3 +114,18 @@ class RegisterView: UIView {
     }
     
 }
+
+extension RegisterView: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            self.senhaTextField.becomeFirstResponder()
+        } else if textField == senhaTextField {
+            self.confirmaTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+}
+
+

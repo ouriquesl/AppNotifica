@@ -8,13 +8,8 @@
 import Foundation
 import UIKit
 
-class LoginView: UIView {
-   //MARK: - Initialize
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = .viewBackgroundColor
-        setupVisualElements()
-    }
+class LoginView: ViewDefault {
+   
     
     //MARK: - Closure
     var onRegisterTap: (() -> Void)?
@@ -29,10 +24,15 @@ class LoginView: UIView {
     var imageLabel = LabelDefault(text: "Registre e gerencie as ocorrências do seu IF", font: UIFont.systemFont(ofSize: 17, weight: .regular))
     
     //cria a função para o emailTextField
-    var emailTextField = TextFieldDefault(text: "E-mail")
+    var emailTextField = TextFieldDefault(placeholder: "E-mail", keyBoardType: .emailAddress, returnKeyType: .next)
     
     //cria a função para a senhaTextField
-    var senhaTextField = TextFieldDefault(text: "Senha")
+    var senhaTextField: TextFieldDefault = {
+        let text = TextFieldDefault (placeholder: "Senha", keyBoardType: .emailAddress, returnKeyType: .done)
+        text.isSecureTextEntry = true
+        
+        return text
+    }()
     
 
     //cria a função para a buttonLogar
@@ -41,7 +41,10 @@ class LoginView: UIView {
     var buttonRegistrar = ButtonDefault(text: "REGISTRAR")
     
     
-    func setupVisualElements(){
+    override func setupVisualElements(){
+        super.setupVisualElements()
+        emailTextField.delegate = self
+        senhaTextField.delegate = self
         self.addSubview(imageLogin)
         self.addSubview(imageLabel)
         self.addSubview(emailTextField)
@@ -96,9 +99,7 @@ class LoginView: UIView {
     
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder: ) has not been implemented ")
-    }
+    
     
     //MARK: - Actions
     @objc
@@ -112,6 +113,16 @@ class LoginView: UIView {
     
 }
 
+extension LoginView: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            self.senhaTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+}
 
 
 
