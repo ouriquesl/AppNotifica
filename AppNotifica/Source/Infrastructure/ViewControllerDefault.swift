@@ -14,5 +14,6 @@ class ViewControllerDefault: ViewController{
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
+        
     }
 }

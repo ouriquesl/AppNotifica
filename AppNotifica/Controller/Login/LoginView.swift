@@ -18,6 +18,7 @@ class LoginView: UIView {
     
     //MARK: - Closure
     var onRegisterTap: (() -> Void)?
+    var onLogarTap: (() -> Void)?
     
     
     //MARK: - Properties
@@ -49,6 +50,7 @@ class LoginView: UIView {
         self.addSubview(buttonRegistrar)
         
         buttonRegistrar.addTarget(self, action: #selector(registerTap), for: .touchUpInside)
+        buttonLogar.addTarget(self, action: #selector(logarTap), for: .touchUpInside)
         NSLayoutConstraint.activate([
             imageLogin.widthAnchor.constraint(equalToConstant: 274.99),
             imageLogin.heightAnchor.constraint(equalToConstant: 82.64),
@@ -103,9 +105,14 @@ class LoginView: UIView {
     private func registerTap(){
         onRegisterTap?()
     }
-    
+    @objc
+    private func logarTap(){
+        onLogarTap?()
+    }
     
 }
+
+
 
 
 

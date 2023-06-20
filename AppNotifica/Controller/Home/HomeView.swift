@@ -10,18 +10,20 @@ import UIKit
 
 class HomeView: UIView{
     //MARK: - Closures
-    //MARK: - Properties
+    //MARK: - Properts
     //MARK: - Inits
-    override init(frame: CGRect){
+    
+    override init(frame:CGRect){
         super.init(frame: frame)
         setupVisualElements()
+        self.backgroundColor = .viewBackgroundColor
     }
     
-    required init? (coder: NSCoder){
-        fatalError("Init(coder: ) has not been implemented")
+    required init?  (coder:NSCoder){
+        fatalError(" Init(coder: ) has not been implementd")
     }
-    
     func setupVisualElements(){
-        
+        //self.setupVisualElements
     }
+    
 }

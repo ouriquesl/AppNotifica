@@ -24,6 +24,6 @@ override func loadView(){
 override func viewDidLoad(){
     super.viewDidLoad()
     self.title = "Home"
-    self.navigationController?.navigationBar.prefersLargeTitles = true
-}
+    self.navigationItem.setHidesBackButton(true, animated: false)
+    }
 }
