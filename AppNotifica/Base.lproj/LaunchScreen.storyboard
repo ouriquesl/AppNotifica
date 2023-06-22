@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="ayV-eY-UxJ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoLaunchScreen" highlightedImage="homekit" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ayV-eY-UxJ">
                                 <rect key="frame" x="76" y="345" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -37,6 +37,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LogoLaunchScreen" width="831" height="250"/>
+        <image name="LogoLaunchScreen" width="235" height="70.666664123535156"/>
+        <image name="homekit" catalog="system" width="128" height="104"/>
     </resources>
 </document>

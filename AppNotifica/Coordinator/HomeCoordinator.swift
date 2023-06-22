@@ -12,6 +12,9 @@ class HomeCoordinator: Coordinator {
     private let navigationController: UINavigationController
     lazy var homeViewController: HomeViewController = {
         let viewController = HomeViewController()
+        viewController.tabBarItem.title = "Home"
+        viewController.tabBarItem.image = UIImage(systemName: "homekit")
+        
         return viewController
     }()
     
@@ -21,8 +24,5 @@ class HomeCoordinator: Coordinator {
     
     
     func start() {
-        let viewController = HomeViewController()
-        self.navigationController.pushViewController(viewController, animated: true)
-        
     }
 }
