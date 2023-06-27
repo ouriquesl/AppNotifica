@@ -17,6 +17,10 @@ class NovaOcorrenciaView: ViewDefault{
             let view = UIImageView ()
             view.image = UIImage(named: "ImagemCamera")
             
+            let tapGR = UITapGestureRecognizer(target: self, action: #selector(cameraTap))
+                view.addGestureRecognizer(tapGR)
+                view.isUserInteractionEnabled = true
+        
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
         } ()
@@ -88,7 +92,7 @@ class NovaOcorrenciaView: ViewDefault{
         
     }
     @objc
-    private func cammeraTap(){
+    private func cameraTap(){
         self.onCameraTap?()
     }
     func setImage (image: UIImage){
