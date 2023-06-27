@@ -10,6 +10,7 @@ import UIKit
 
 class NovaOcorrenciaView: ViewDefault{
     //MARK: -Closures
+    var onCameraTap:(()-> Void)?
     //MARK: - Properties
     //MARK: - Inits
     lazy var imagem: UIImageView = {
@@ -86,4 +87,11 @@ class NovaOcorrenciaView: ViewDefault{
         ])
         
     }
+    @objc
+    private func cammeraTap(){
+        self.onCameraTap?()
+    }
+    func setImage (image: UIImage){
+            imagem.image = image
+        }
 }
